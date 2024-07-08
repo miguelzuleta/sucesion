@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nombres en Orden Aleatorio</title>
+  <style>
+    *, *:before, *:after {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000;
+      display: flex;
+      padding: 25px;
+      justify-content: center;
+    }
+
+    #epp {
+      background-color: #fff;
+      padding: 12px 25px;
+      width: 600px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      letter-spacing: 0.015em;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+    }
+
+    .row {
+      display: flex;
+      padding: 12px 0;
+      border: 1px solid #ddd;
+      border-width: 0 0 1px;
+      align-items: center;
+    }
+
+    .row * {
+      color: #111;
+      padding: 25px 0;
+    }
+    
+    .row:last-child {
+      border: none;
+    }
+
+    .wrap.init {
+      display: none;
+    }
+
+    .row {
+      counter-increment: row 1;
+    }
+
+    .row:before {
+      content: counter(row);
+      margin-right: 0.5em;
+      font-weight: bold;
+    }
+
+    .step {
+      color: #aaa;
+      font-size: 13px;
+      padding: 12px 0;
+    }
+
+    button {
+      color: #fff;
+      background-color: #007AFF;
+      border-radius: 10em;
+      text-align: center;
+      width: 100%;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      font-weight: 500;
+      outline: none;
+      border: none;
+      font-size: 1em;
+      margin: 20px 0;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <section id="epp"></section>
+  <script src="https://miguelzuleta.com/append/index.js"></script>
+  <script>
+    let members = [
+      'Eduardo',
+      'Juan Antonio',
+      'Alejandro',
+      'Laura',
+      'Santiago',
+      'Pili'
+    ];
+
+
+    let shuffleTable = () => {
+      let listElems = '';
+      let shuffle = members.map(el => [Math.random(), el]).sort().map(el => el[1]);
+
+      shuffle.forEach(el => {
+        listElems += `<div class="row">${el}</div>`;
+      });
+
+      return listElems;
+    }
+
+    let renderTable = () => {
+      append(appended.list, shuffleTable(), 'update');
+    }
+
+    append('#epp', `
+      <div class="list" bb-label="list"></div>
+      <button bb-label="cta">Rebarajar</button>
+    `);
+
+    appended.cta.addEventListener('click', renderTable);
+
+    renderTable();
+  </script>
+</body>
+</html>
