@@ -44,6 +44,23 @@
       display: block;
     }
 
+    a.disabled {
+        background-color: gray;
+        color: #444;
+    }
+
+    a.disabled:hover {
+        pointer-events: none;
+    }
+
+    a span {
+        margin-top: 6px;
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+
     a:hover {
       cursor: pointer;
     }
@@ -51,8 +68,8 @@
 </head>
 <body>
     <section id="links">
-        <a href="tareas/">Lista de Tareas</a>
-        <a href="reunion/">Reunion en Meets de Hoy</a>
+        <a href="reunion/" class="disabled_">Reunion en Meets<span>Proxima Reunion el 8 de Julio a las 6:30PM ET</span></a>
+        <a href="tareas/">Tareas y Documentos</a>
         <a href="nombres/">Nombres en Orden Aleatorio</a>
     </section>
 </body>
